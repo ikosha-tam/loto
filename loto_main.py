@@ -1,17 +1,11 @@
-import random
-from card_loto import Loto
+# import random
+import loto_moduls
+from cards import Loto
 
 human = Loto()
-bag = []
-# Инициализация мешка
-for item in range(1, 91):
-    bag.append(item)
-print(bag)
-for i in range(10):
-    random_number = random.choice(bag)
-    print(random_number, len(random_number))
-    random_number.remove(random_number)
-    input()
+
+
+
 
 while True:
     print('*' * 50)
@@ -27,7 +21,7 @@ while True:
     if choise == '1':
         pass
     elif choise == '2':
-        pass
+        loto_moduls.init_bag()
     elif choise == '3':
         break
 
