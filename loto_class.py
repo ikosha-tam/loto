@@ -17,17 +17,16 @@ class Loto:
         Создание новой карточки
         :return:
         """
-        # self.card = {
-        #     1: [1, 2, 3, 4, 5],
-        #     2: [6, 7, 8, 9, 10],
-        #     3: [11, 12, 13, 14, 15]
-        # }
+        # Инициализация мешка с номерами боченков
         init_bag()
+        # Получаем 15 случайных чисел для игровой карточки
         self.card = random.sample(bag, k=15)
         self.card.sort()
 
         self.card_line_1 = random.sample(self.card, k=5)
         self.card_line_1.sort()
+
+        # "Разбавляем" числа пробелами
         self.card_line_1.insert(random.randint(0, 4), '  ')
         self.card_line_1.insert(random.randint(0, 5), '  ')
         self.card_line_1.insert(random.randint(0, 6), '  ')
