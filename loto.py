@@ -7,8 +7,13 @@ size_bag = 90  # Остаток боченков в мешке
 gamer_1 = Loto()
 gamer_2 = Loto()
 
-
 def print_games_cards(title_1, title_2):
+    '''
+    Выводим карточки на экран
+    :param title_1: Заголовок 1-й карточки
+    :param title_2: Заголовок 2-й карточки
+    :return:
+    '''
     print(gamer_1.card)
     print(gamer_2.card)
     print('{:-^26}'.format(title_1))
