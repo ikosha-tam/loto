@@ -14,8 +14,6 @@ class Loto:
         Создание новой карточки
         :return:
         """
-        # Инициализация мешка с номерами боченков
-        # init_bag()
 
         # Получаем 15 случайных чисел для игровой карточки
         self.card = random.sample(bag, k=15)
@@ -53,8 +51,6 @@ class Loto:
         self.gamer_card.append(self.line_2)
         self.line_3 = "{:2} {:2} {:2} {:2} {:2} {:2} {:2} {:2} {:2}".format(*self.card_line_3)
         self.gamer_card.append(self.line_3)
-
-        # print(self.gamer_card)
 
 # Функции
 def init_bag():

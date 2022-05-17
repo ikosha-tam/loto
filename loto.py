@@ -4,8 +4,24 @@ import sys
 
 size_bag = 90  # Остаток боченков в мешке
 
-user = Loto()
-computer = Loto()
+gamer_1 = Loto()
+gamer_2 = Loto()
+
+
+def print_games_cards(title_1, title_2):
+    print(gamer_1.card)
+    print(gamer_2.card)
+    print('{:-^26}'.format(title_1))
+    gamer_1.print_card()
+    for item in gamer_1.gamer_card:
+        print(item)
+    print('-' * 26)
+    print('{:-^26}'.format(title_2))
+    gamer_2.print_card()
+    for item in gamer_2.gamer_card:
+        print(item)
+    print('-' * 26)
+
 
 while True:
     print('1. Играть')
@@ -20,31 +36,28 @@ while True:
         print('2. Компьютер - Компьютер')
         print('3. Пользователь - Пользователь')
         type_players = input('=> ')
-        if type_players == '1':
-            # Инициализируем мешок с боченками
-            loto_class.init_bag()
-            # Создаем карочки
-            user.make_card()
-            computer.make_card()
-            # Выводим карточки на экран
-            print(user.card)
-            print(computer.card)
-            print('{:-^26}'.format(' Ваша карточка '))
-            user.print_card()
-            for item in user.gamer_card:
-                print(item)
-            print('-' * 26)
-            print('{:-^26}'.format(' Карточка компьютера '))
-            computer.print_card()
-            for item in computer.gamer_card:
-                print(item)
-            print('-' * 26)
 
-            sys.exit()
+        if type_players == '1':
+            title_1 = ' Ваша карточка '
+            title_2 = ' Карточка компьютера '
+        elif type_players == '2':
+            title_1 = ' Карточка компьютера-1 '
+            title_2 = ' Карточка компьютера-2 '
+        elif type_players == '3':
+            title_1 = ' Ваша карточка '
+            title_2 = ' Карточка игрока-2 '
         else:
             print('Неверный пункт меню!')
             sys.exit()
 
+        # Инициализируем мешок с боченками
+        loto_class.init_bag()
+        # Создаем карточки
+        gamer_1.make_card()
+        gamer_2.make_card()
+        # Выводим карточки на экран
+        print_games_cards(title_1, title_2)
+        break
 
 
     elif choise == '2':  # Выход
