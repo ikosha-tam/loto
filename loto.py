@@ -1,44 +1,54 @@
 import loto_class
 from loto_class import Loto
+import sys
 
-size_bag = 90   # Остаток боченков в мешке
+size_bag = 90  # Остаток боченков в мешке
 
-human = Loto()
+user = Loto()
+computer = Loto()
 
 while True:
-    print('*' * 50)
-
-    print('1. Выбрать тип игроков')
-    print('2. Играть')
-    print('3. Выход')
+    print('1. Играть')
+    print('2. Выход')
     print()
-    print('10. Создать карточку')
-    print('11. Распечатать карточку')
-    print()
-    print('12. Инициализация мешка')
-    print('13. Вывести содержимое мешка')
     print('14. Вытащить боченок и вывести содержимое мешка')
 
     choise = input('Выберите пункт: ')
-    if choise == '1':  # Выбрать тип игроков
-        pass
-    elif choise == '2':  # Играть
-        pass
-    elif choise == '3':  # Выход
-        break
+    if choise == '1':  # Играть
+        print('Выберете тип игроков:')
+        print('1. Пользователь - Компьютер')
+        print('2. Компьютер - Компьютер')
+        print('3. Пользователь - Пользователь')
+        type_players = input('=> ')
+        if type_players == '1':
+            # Инициализируем мешок с боченками
+            loto_class.init_bag()
+            # Создаем карочки
+            user.make_card()
+            computer.make_card()
+            # Выводим карточки на экран
+            print(user.card)
+            print(computer.card)
+            print('{:-^26}'.format(' Ваша карточка '))
+            user.print_card()
+            for item in user.gamer_card:
+                print(item)
+            print('-' * 26)
+            print('{:-^26}'.format(' Карточка компьютера '))
+            computer.print_card()
+            for item in computer.gamer_card:
+                print(item)
+            print('-' * 26)
 
-    elif choise == '10':  # Создать карточку
-        human.make_card()
-        print(human.card)
-    elif choise == '11':  # Распечатать карточку
-        print(human.card)
-        print(human.card_line_1)
-        print(human.card_line_2)
-        print(human.card_line_3)
-    elif choise == '12':  # Инициализация мешка
-        loto_class.init_bag()
-    elif choise == '13':  # Вывести содержимое мешка
-        print(loto_class.bag)
+            sys.exit()
+        else:
+            print('Неверный пункт меню!')
+            sys.exit()
+
+
+
+    elif choise == '2':  # Выход
+        sys.exit()
     elif choise == '14':  # Вытащить боченок и вывести содержимое мешка
         pulled_barrel = loto_class.pull_barrel()
         size_bag = len(loto_class.bag)

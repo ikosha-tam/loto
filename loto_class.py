@@ -6,11 +6,8 @@ number_barrels = 90  # Число боченков в мешке
 
 class Loto:
     def __init__(self):
-        self.card = {
-            1: [],
-            2: [],
-            3: []
-        }
+        self.card = []
+        self.gamer_card = []
 
     def make_card(self):
         """
@@ -18,7 +15,8 @@ class Loto:
         :return:
         """
         # Инициализация мешка с номерами боченков
-        init_bag()
+        # init_bag()
+
         # Получаем 15 случайных чисел для игровой карточки
         self.card = random.sample(bag, k=15)
         self.card.sort()
@@ -48,13 +46,15 @@ class Loto:
         self.card_line_3.insert(random.randint(0, 6), '  ')
         self.card_line_3.insert(random.randint(0, 7), '  ')
 
-    # def print_card(self):
-    #     """
-    #     Вывести карточку на экран
-    #     :return:
-    #     """
-    #     return self.card
+    def print_card(self):
+        self.line_1 = "{:2} {:2} {:2} {:2} {:2} {:2} {:2} {:2} {:2}".format(*self.card_line_1)
+        self.gamer_card.append(self.line_1)
+        self.line_2 = "{:2} {:2} {:2} {:2} {:2} {:2} {:2} {:2} {:2}".format(*self.card_line_2)
+        self.gamer_card.append(self.line_2)
+        self.line_3 = "{:2} {:2} {:2} {:2} {:2} {:2} {:2} {:2} {:2}".format(*self.card_line_3)
+        self.gamer_card.append(self.line_3)
 
+        # print(self.gamer_card)
 
 # Функции
 def init_bag():
@@ -75,3 +75,4 @@ def pull_barrel():
     barrel = random.choice(bag)
     bag.remove(barrel)
     return barrel
+
