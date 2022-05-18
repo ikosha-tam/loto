@@ -63,39 +63,86 @@ while True:
         gamer_2.make_card()
 
         while size_bag > 0:  # Игра продолжается до пустого мешка
-            if num_in_card_gamer1 == 0:
-                print('Вы выиграли!!!. Зачеркнуты все цифры в карточке')
-                sys.exit()
             # Вынимаем боченок из мешка
             pulled_barrel = loto_class.pull_barrel()
             size_bag = len(loto_class.bag)
             print()
-            print('Новый боченок: ', pulled_barrel, ' (осталось )', size_bag)
+            print(f'Новый боченок: {pulled_barrel}, в мешке осталось-{size_bag}')
             # Выводим карточки на экран
             print(num_in_card_gamer1, num_in_card_gamer2)
             print_games_cards(title_1, title_2)
+
+            # '1. Пользователь - Компьютер'
             if type_players == '1':
+                # Ход игрока
+                if num_in_card_gamer1 == 0:
+                    print('Вы выиграли!!!. Зачеркнуты все цифры в карточке')
+                    sys.exit()
+                if num_in_card_gamer2 == 0:
+                    print('Выиграл компьютер!!!. Зачеркнуты все цифры в карточке')
+                    sys.exit()
                 answer_player_1 = input('Зачеркнуть цифру? (y/n): ')
                 if answer_player_1 == 'y' and pulled_barrel in gamer_1.card:
                     gamer_1.card[gamer_1.card.index(pulled_barrel)] = '><'
+                    num_in_card_gamer1 -= 1
                     if pulled_barrel in gamer_1.card_line_1:
                         gamer_1.card_line_1[gamer_1.card_line_1.index(pulled_barrel)] = '><'
                     if pulled_barrel in gamer_1.card_line_2:
                         gamer_1.card_line_2[gamer_1.card_line_2.index(pulled_barrel)] = '><'
                     if pulled_barrel in gamer_1.card_line_3:
                         gamer_1.card_line_3[gamer_1.card_line_3.index(pulled_barrel)] = '><'
-                    num_in_card_gamer1 -= 1
-                # else:
-                #     print('Вы проиграли (yy)')
-                #     sys.exit()
-                if answer_player_1 == 'n' and pulled_barrel in gamer_1.card:
-                    print('Вы проиграли (ny)')
+                elif answer_player_1 == 'n' and pulled_barrel in gamer_1.card:
+                    print('Вы проиграли (число есть в карточке)')
+                    sys.exit()
+                elif answer_player_1 == 'y' and pulled_barrel not in gamer_1.card:
+                    print('Вы проиграли (числа нет в карточке)')
+                    sys.exit()
+                elif answer_player_1 != 'n' and answer_player_1 != 'y':
+                    print('Неверный ввод. Введите \"y\" или \"n\"')
                     sys.exit()
 
+                # Ход компьтера
+                if pulled_barrel in gamer_2.card:
+                    gamer_2.card[gamer_2.card.index(pulled_barrel)] = '><'
+                    num_in_card_gamer2 -= 1
+                if pulled_barrel in gamer_2.card_line_1:
+                    gamer_2.card_line_1[gamer_2.card_line_1.index(pulled_barrel)] = '><'
+                if pulled_barrel in gamer_2.card_line_2:
+                    gamer_2.card_line_2[gamer_2.card_line_2.index(pulled_barrel)] = '><'
+                if pulled_barrel in gamer_2.card_line_3:
+                    gamer_2.card_line_3[gamer_2.card_line_3.index(pulled_barrel)] = '><'
 
+            # '2. Компьютер - Компьютер'
+            if type_players == '2':
+                if num_in_card_gamer1 == 0:
+                    print('Выиграл компьютер 1!!!. Зачеркнуты все цифры в карточке')
+                    sys.exit()
+                if num_in_card_gamer2 == 0:
+                    print('Выиграл компьютер 2!!!. Зачеркнуты все цифры в карточке')
+                    sys.exit()
 
+                # Ход компьтера 1
+                # input()
+                if pulled_barrel in gamer_1.card:
+                    gamer_1.card[gamer_1.card.index(pulled_barrel)] = '><'
+                    num_in_card_gamer1 -= 1
+                if pulled_barrel in gamer_1.card_line_1:
+                    gamer_1.card_line_1[gamer_1.card_line_1.index(pulled_barrel)] = '><'
+                if pulled_barrel in gamer_1.card_line_2:
+                    gamer_1.card_line_2[gamer_1.card_line_2.index(pulled_barrel)] = '><'
+                if pulled_barrel in gamer_1.card_line_3:
+                    gamer_1.card_line_3[gamer_1.card_line_3.index(pulled_barrel)] = '><'
 
-
+                # Ход компьтера 2
+                if pulled_barrel in gamer_2.card:
+                    gamer_2.card[gamer_2.card.index(pulled_barrel)] = '><'
+                    num_in_card_gamer2 -= 1
+                if pulled_barrel in gamer_2.card_line_1:
+                    gamer_2.card_line_1[gamer_2.card_line_1.index(pulled_barrel)] = '><'
+                if pulled_barrel in gamer_2.card_line_2:
+                    gamer_2.card_line_2[gamer_2.card_line_2.index(pulled_barrel)] = '><'
+                if pulled_barrel in gamer_2.card_line_3:
+                    gamer_2.card_line_3[gamer_2.card_line_3.index(pulled_barrel)] = '><'
 
     elif choise == '2':  # Выход
         sys.exit()
