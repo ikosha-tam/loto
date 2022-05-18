@@ -45,6 +45,7 @@ class Loto:
         self.card_line_3.insert(random.randint(0, 7), '  ')
 
     def print_card(self):
+        self.gamer_card.clear()
         self.line_1 = "{:2} {:2} {:2} {:2} {:2} {:2} {:2} {:2} {:2}".format(*self.card_line_1)
         self.gamer_card.append(self.line_1)
         self.line_2 = "{:2} {:2} {:2} {:2} {:2} {:2} {:2} {:2} {:2}".format(*self.card_line_2)
