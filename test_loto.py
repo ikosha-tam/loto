@@ -1,22 +1,21 @@
 import pytest
-
 import loto_class
 from loto_class import Loto
 
+
 class TestLoto:
-
-    def setUp(self):
-        pass
-        # self.gamer = Loto()
-
-    def tearDown(self):
-        pass
-        # del self.gamer
-
     def test_init_bag(self):
-        # gamer_test = Loto()
+        test_bag = []
+        for item in range(1, 91):
+            test_bag.append(item)
         loto_class.init_bag()
-        assert loto_class.bag = [1,2,3,4,5,6,7]
+        assert loto_class.bag == test_bag
 
+    def test_pull_barrel(self):
+        test_barrel = loto_class.pull_barrel()
+        assert test_barrel in range(1, 91)
 
-
+    def test_make_card(self):
+        test_gamer = Loto()
+        test_gamer.make_card()
+        assert len(test_gamer.card) == 15
