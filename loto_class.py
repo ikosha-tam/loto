@@ -5,9 +5,19 @@ number_barrels = 90  # Число боченков в мешке
 
 
 class Loto:
+
     def __init__(self):
         self.card = []
         self.gamer_card = []
+
+    "# TODO: Сделать ..."""
+    def __str__(self):
+        """
+        Приведение объекта с строке
+        """
+        pass
+
+
 
     def make_card(self):
         """
